@@ -30,8 +30,10 @@ public class JWTTokenAuthorizationFilter extends OncePerRequestFilter{
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-
 		
+		response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		response.setHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-with, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,Authorization");
+		response.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Allow-Origin,Access-Control-Allow-Credentials, Authorization");
 		if(request.getMethod().equalsIgnoreCase("OPTIONS")) {
 			response.setStatus(HttpStatus.OK.value());
 		}else {
