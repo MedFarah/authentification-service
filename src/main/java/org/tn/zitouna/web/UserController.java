@@ -38,7 +38,7 @@ public class UserController {
 	@PostMapping("/register")
 	public AppUser register(@RequestBody AppUser user) {
 		
-
+		user.setActived(true);
 		return userService.register(user);
 	}
 
