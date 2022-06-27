@@ -39,8 +39,8 @@ public class UserService  implements UserDetailsService {
 	}
 	
 	public AppUser register(AppUser u) {
-		//String p = new String(new BCryptPasswordEncoder().encode(u.getPassword()));
-		//u.setPassword(p);
+		String p = new String(new BCryptPasswordEncoder().encode(u.getPassword()));
+		u.setPassword(p);
 		u.setRoles("admin");u.setActived(true);
 		return appUserRepository.insert(u);
 	}
@@ -58,6 +58,7 @@ public class UserService  implements UserDetailsService {
 	}
 	
 	public void supprimerUser( String id) {
+		appUserRepository.delete(appUserRepository.findByUsername(id));
 		appUserRepository.deleteById(id);
 	}
 }

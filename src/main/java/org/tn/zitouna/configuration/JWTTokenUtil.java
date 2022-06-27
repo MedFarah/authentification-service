@@ -51,7 +51,7 @@ public class JWTTokenUtil {
 				.setClaims(claims)
 				.setSubject(subject)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + (5 * 60 * 60 * 1000)))
+				.setExpiration(new Date(System.currentTimeMillis() + (5 * 60 * 60 * 10000)))
 				.signWith(SignatureAlgorithm.HS512, secretKey)
 				.compact();
 	}
